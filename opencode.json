@@ -1,0 +1,35 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "catppuccin/macchiato",
+  "model": "github-copilot/gpt-5.4",
+  "small_model": "github-copilot/gpt-5.4-mini",
+  "autoupdate": true,
+  "permission": {
+    "edit": "ask",
+    "bash": "ask",
+    "webfetch": "allow"
+  },
+  "agent": {
+    "plan": {
+      "mode": "primary",
+      "model": "github-copilot/gpt-5.4"
+    },
+    "build": {
+      "mode": "primary",
+      "model": "github-copilot/gpt-5.3-codex"
+    },
+    "code-review": {
+      "description": "Review code for best practices",
+      "mode": "primary",
+      "model": "github-copilot/claude-sonnet-4.6",
+      "prompt": "Please review the code requests using the instructions listed in either ~/.config/opencode/CODE_REVIEW_GUIDELINES.md or project specific CODE_REVIEW_GUIDELINES.md if it exists",
+      "permission": {
+        "edit": "deny",
+        "webfetch": "allow",
+        "bash": {
+          "*": "deny"
+        }
+      }
+    }
+  }
+}

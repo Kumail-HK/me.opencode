@@ -1,0 +1,6 @@
+node_modules
+package.json
+package-lock.json
+bun.lock
+tui.json
+opencode.json.tui-migration.bak
