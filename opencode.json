@@ -16,12 +16,14 @@
     },
     "build": {
       "mode": "primary",
-      "model": "github-copilot/gpt-5.3-codex"
+      "model": "github-copilot/gpt-5.3-codex",
+      "temperature": 0.1
     },
     "code-review": {
       "description": "Review code for best practices",
       "mode": "primary",
       "model": "github-copilot/claude-sonnet-4.6",
+      "temperature": 0.1,
       "prompt": "Please review the code requests using the instructions listed in either ~/.config/opencode/CODE_REVIEW_GUIDELINES.md or project specific CODE_REVIEW_GUIDELINES.md if it exists",
       "permission": {
         "edit": "deny",
