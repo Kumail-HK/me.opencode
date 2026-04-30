@@ -3,6 +3,7 @@
   "theme": "catppuccin/macchiato",
   "model": "github-copilot/gpt-5.4",
   "small_model": "github-copilot/gpt-5.4-mini",
+  "default_agent": "plan",
   "autoupdate": true,
   "permission": {
     "edit": "ask",
@@ -18,6 +19,19 @@
       "mode": "primary",
       "model": "github-copilot/gpt-5.3-codex",
       "temperature": 0.1
+    },
+    "investigate": {
+      "mode": "primary",
+      "model": "github-copilot/gpt-5.4",
+      "prompt": "Help me investigate a bug or an issue. Ask me about the expected outcome if not already supplied. Start small analysing the provided error messages and specifically which area of the code (file and line number) they originate from. Ask me to validate your findings. Only move on to the next possible cause when I have told you the current fix is not working. Do not make any assumptions and always clarify these with me.",
+      "permission": {
+        "webfetch": "allow",
+        "websearch": "allow",
+        "edit": "deny",
+        "bash": {
+          "*": "deny"
+        }
+      }
     },
     "code-review": {
       "description": "Review code for best practices",
