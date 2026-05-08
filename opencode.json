@@ -15,7 +15,7 @@
         "websearch": "allow",
         "bash": {
           "*": "deny",
-          "grep": "allow"
+          "grep *": "allow"
         }
       }
     },
@@ -29,7 +29,7 @@
         "edit": "ask",
         "bash": {
           "*": "ask",
-          "grep": "allow"
+          "grep *": "allow"
         }
       }
     },
@@ -43,7 +43,7 @@
         "websearch": "allow",
         "bash": {
           "*": "deny",
-          "grep": "allow"
+          "grep *": "allow"
         }
       }
     },
@@ -59,7 +59,9 @@
         "websearch": "allow",
         "bash": {
           "*": "deny",
-          "grep": "allow"
+          "grep *": "allow",
+          "git log *": "allow",
+          "git status *": "allow"
         }
       }
     },
