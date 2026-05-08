@@ -4,32 +4,46 @@
   "model": "github-copilot/gpt-5.4",
   "small_model": "github-copilot/gpt-5.4-mini",
   "default_agent": "plan",
-  "autoupdate": true,
-  "permission": {
-    "edit": "ask",
-    "bash": "ask",
-    "webfetch": "allow"
-  },
+  "autoupdate": "notify",
   "agent": {
     "plan": {
       "mode": "primary",
-      "model": "github-copilot/gpt-5.4"
+      "model": "github-copilot/gpt-5.4",
+      "permission": {
+        "*": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "bash": {
+          "*": "deny",
+          "grep": "allow"
+        }
+      }
     },
     "build": {
       "mode": "primary",
       "model": "github-copilot/gpt-5.3-codex",
-      "temperature": 0.1
+      "temperature": 0.1,
+      "permission": {
+        "*": "deny",
+        "read": "allow",
+        "edit": "ask",
+        "bash": {
+          "*": "ask",
+          "grep": "allow"
+        }
+      }
     },
     "investigate": {
       "mode": "primary",
       "model": "github-copilot/gpt-5.4",
       "prompt": "Help me investigate a bug or an issue. Ask me about the expected outcome if not already supplied. Start small analysing the provided error messages and specifically which area of the code (file and line number) they originate from. Ask me to validate your findings. Only move on to the next possible cause when I have told you the current fix is not working. Do not make any assumptions and always clarify these with me.",
       "permission": {
+        "*": "deny",
         "webfetch": "allow",
         "websearch": "allow",
-        "edit": "deny",
         "bash": {
-          "*": "deny"
+          "*": "deny",
+          "grep": "allow"
         }
       }
     },
@@ -40,11 +54,23 @@
       "temperature": 0.1,
       "prompt": "Please review the code requests using the instructions listed in either ~/.config/opencode/CODE_REVIEW_GUIDELINES.md or project specific CODE_REVIEW_GUIDELINES.md if it exists",
       "permission": {
-        "edit": "deny",
+        "*": "deny",
         "webfetch": "allow",
+        "websearch": "allow",
         "bash": {
-          "*": "deny"
+          "*": "deny",
+          "grep": "allow"
         }
+      }
+    },
+    "brainstorm": {
+      "description": "Brainstorms implementation ideas, explores alternative approaches, and provides example code snippets for prototyping.",
+      "model": "github-copilot/gpt-5.4",
+      "prompt": "You are a brainstorming and prototyping assistant. Help generate implementation ideas, alternative approaches, and example code snippets. Prefer practical, minimal, and adaptable code examples over overly complex solutions. Do not make any assumptions and clarify these with me. Always try to follow the official documentation. When suggesting code explain what it does and what the tradeoffs are.",
+      "permission": {
+        "*": "deny",
+        "websearch": "allow",
+        "webfetch": "allow"
       }
     }
   }
