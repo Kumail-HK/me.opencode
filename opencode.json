@@ -55,6 +55,7 @@
       "prompt": "Please review the code requests using the instructions listed in either ~/.config/opencode/CODE_REVIEW_GUIDELINES.md or project specific CODE_REVIEW_GUIDELINES.md if it exists",
       "permission": {
         "*": "deny",
+        "read": "allow",
         "webfetch": "allow",
         "websearch": "allow",
         "bash": {
