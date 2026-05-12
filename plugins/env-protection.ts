@@ -1,7 +1,9 @@
+import type { Plugin } from "@opencode-ai/plugin"
+
 /**
  * A plugin that runs before reading files if the file is an environment file then it will not be allowed to read it.
  */
-export const EnvProtection = async ({
+export const EnvProtection: Plugin = async ({
   project,
   client,
   $,
