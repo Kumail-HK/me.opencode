@@ -1,16 +1,19 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "catppuccin/macchiato",
-  "model": "github-copilot/gpt-5.4",
-  "small_model": "github-copilot/gpt-5.4-mini",
+  "model": "opencode-go/kimi-k2.6",
+  "small_model": "opencode-go/deepseek-v4-flash",
   "default_agent": "plan",
   "autoupdate": "notify",
   "agent": {
     "plan": {
       "mode": "primary",
-      "model": "github-copilot/gpt-5.4",
+      "model": "opencode-go/glm-5.1",
       "permission": {
         "*": "deny",
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
         "webfetch": "allow",
         "websearch": "allow",
         "bash": {
@@ -21,59 +24,19 @@
     },
     "build": {
       "mode": "primary",
-      "model": "github-copilot/gpt-5.3-codex",
+      "model": "opencode-go/kimi-k2.6",
       "temperature": 0.1,
       "permission": {
         "*": "deny",
         "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
         "edit": "ask",
+        "write": "ask",
         "bash": {
           "*": "ask",
           "grep *": "allow"
         }
-      }
-    },
-    "investigate": {
-      "mode": "primary",
-      "model": "github-copilot/gpt-5.4",
-      "prompt": "Help me investigate a bug or an issue. Ask me about the expected outcome if not already supplied. Start small analysing the provided error messages and specifically which area of the code (file and line number) they originate from. Ask me to validate your findings. Only move on to the next possible cause when I have told you the current fix is not working. Do not make any assumptions and always clarify these with me.",
-      "permission": {
-        "*": "deny",
-        "webfetch": "allow",
-        "websearch": "allow",
-        "bash": {
-          "*": "deny",
-          "grep *": "allow"
-        }
-      }
-    },
-    "code-review": {
-      "description": "Review code for best practices",
-      "mode": "primary",
-      "model": "github-copilot/claude-sonnet-4.6",
-      "temperature": 0.1,
-      "prompt": "Please review the code requests using the instructions listed in either ~/.config/opencode/CODE_REVIEW_GUIDELINES.md or project specific CODE_REVIEW_GUIDELINES.md if it exists",
-      "permission": {
-        "*": "deny",
-        "read": "allow",
-        "webfetch": "allow",
-        "websearch": "allow",
-        "bash": {
-          "*": "deny",
-          "grep *": "allow",
-          "git log *": "allow",
-          "git status *": "allow"
-        }
-      }
-    },
-    "brainstorm": {
-      "description": "Brainstorms implementation ideas, explores alternative approaches, and provides example code snippets for prototyping.",
-      "model": "github-copilot/gpt-5.4",
-      "prompt": "You are a brainstorming and prototyping assistant. Help generate implementation ideas, alternative approaches, and example code snippets. Prefer practical, minimal, and adaptable code examples over overly complex solutions. Do not make any assumptions and clarify these with me. Always try to follow the official documentation. When suggesting code explain what it does and what the tradeoffs are.",
-      "permission": {
-        "*": "deny",
-        "websearch": "allow",
-        "webfetch": "allow"
       }
     }
   }
