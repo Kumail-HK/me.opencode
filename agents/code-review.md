@@ -10,6 +10,8 @@ permission:
   grep: allow
   webfetch: allow
   websearch: allow
+  external_directory:
+    "~/.config/opencode/*": allow
   bash:
     "*": deny
     "grep *": allow
